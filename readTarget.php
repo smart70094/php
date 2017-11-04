@@ -8,7 +8,8 @@
 	$dbgo->query('set character set utf8');
 	
 	$user=$_POST['user'];
-	$sql ="SELECT * FROM participator,target WHERE participator.uid='$user' AND participator.tid=target.tid";
+    $sql = "SELECT *,(SELECT count(*) FROM `mission` WHERE target.tid = mission.tid) AS allmission,(SELECT count(*) FROM `mission` WHERE target.tid = mission.tid AND `state` = 'Y') AS completemission FROM participator,target WHERE participator.uid='$user' AND participator.tid=target.tid";
+	//$sql ="SELECT * FROM participator,target WHERE participator.uid='$user' AND participator.tid=target.tid";
 	$getUser=$dbgo->prepare($sql);
 	$getUser->execute();
 	$arr = array();
@@ -20,6 +21,9 @@
 		$row_array['targetEndTime'] = $datainfo['targetEndTime'];
 		$row_array['state'] = $datainfo['state'];
 		$row_array['auth'] = $datainfo['auth'];
+		$row_array['dream'] = $datainfo['dream'];
+        $row_array['allmission'] = $datainfo['allmission'];
+        $row_array['completemission'] = $datainfo['completemission'];
 		//echo $datainfo['targetName'] . "," .$datainfo['targetContent'] . "," .$datainfo['targetStartTime'] . "," .$datainfo['targetEndTime'] . "," .$datainfo['state'] . "," .$datainfo['auth']. '<br>';
 		array_push($arr,$row_array);
 	}

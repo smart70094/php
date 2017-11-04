@@ -15,8 +15,9 @@
 	$targetEndTime=$_POST['targetEndTime'];
 	$state=$_POST['state'];
 	$auth=$_POST['auth'];
+	$dream=$_POST['dream'];
 	
-	$sql ="INSERT INTO ".$table." (tid,targetName,targetContent,targetStartTime,targetEndTime,state,auth)  VALUES ( '$tid','$targetName','$targetContent','$targetStartTime','$targetEndTime','$state','$auth')";  //新增資料
+	$sql ="INSERT INTO ".$table." (tid,targetName,targetContent,targetStartTime,targetEndTime,state,auth,dream)  VALUES ( '$tid','$targetName','$targetContent','$targetStartTime','$targetEndTime','$state','$auth','$dream')";  //新增資料
 	echo $dbgo->exec($sql);
-	//echo $table.",".$tid .",".$targetName.",".$targetContent.",".$targetStartTime.",".$targetEndTime.",".$state.",".$auth.'<br>';
+	echo $table.",".$tid .",".$targetName.",".$targetContent.",".$targetStartTime.",".$targetEndTime.",".$state.",".$auth.",".$dream.'<br>';
 ?>

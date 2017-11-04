@@ -8,9 +8,8 @@
 	
 	$account=$_POST['account'];
 	$password=$_POST['password'];
-	$state="Y";
 	
-	$sql = "SELECT * FROM account WHERE account='$account' AND password='$password' AND state='$state'";
+	$sql = "SELECT * FROM account WHERE account='$account' AND password='$password'";
 	$result = $dbgo->query($sql);
 	$row=$result->fetchAll();
 	$arr = array();

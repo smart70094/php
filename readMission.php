@@ -19,6 +19,7 @@
 		$row_array['missionContent'] = $datainfo['missionContent'];
 		$row_array['remindTime'] = $datainfo['remindTime'];
 		$row_array['tid'] = $datainfo['tid'];
+		$row_array['planet'] = $datainfo['planet'];
 		$row_array['state'] = $datainfo['state'];
 		$row_array['auth'] = $datainfo['auth'];
 		$row_array['collaborator'] = $datainfo['collaborator'];

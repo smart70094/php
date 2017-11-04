@@ -13,13 +13,14 @@
 	$missionContent=$_POST['missionContent'];
 	$remindTime=$_POST['remindTime'];
 	$tid=$_POST['tid'];
+	$planet=$_POST['planet'];
 	$state=$_POST['state'];
 	$auth=$_POST['auth'];
 	trim($mid," ");
 	
 	//echo $table.",".$mid .",".$missionName.",".$missionContent.",".$remindTime.",".$tid.",".$planet.",".$state.",".$auth.'<br>';
 	
-	$sql ="INSERT INTO ".$table." (mid,missionName,missionContent,remindTime,tid,state,auth,collaborator)  VALUES ( '$mid','$missionName','$missionContent','$remindTime','$tid','$state','$auth','NULL')";  //新增資料
+	$sql ="INSERT INTO ".$table." (mid,missionName,missionContent,remindTime,tid,planet,state,auth,collaborator)  VALUES ( '$mid','$missionName','$missionContent','$remindTime','$tid','$planet','$state','$auth','NULL')";  //新增資料
 	echo $dbgo->exec($sql);
 	
 	
