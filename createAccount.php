@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	$db_host = "localhost";
 	$db_user = "root";
 	$db_pass = "";
@@ -13,12 +13,16 @@
 	$password=$_POST['password'];
 	$name=$_POST['name'];
 	$role=$_POST['role'];
+	$email=$_POST['email'];
+	
 	$sql="SELECT MAX(uid) FROM account";
 	$result = $dbgo->prepare($sql); 
 	$result->execute(); 
 	$uid= $result->fetchColumn(); 
 	$uid=$uid+1;
 	
-	$sql ="INSERT INTO account VALUES ( '$uid','$account','$password','$name','$role')";
-	echo $dbgo->exec($sql);
+	$sql ="INSERT INTO account (uid,account,password,name,role,email) VALUES ( '$uid','$account','$password','$name','$role', '$email')";
+	$result=$dbgo->prepare($sql);	
+	$result->execute();
+	echo $uid;
 ?>
