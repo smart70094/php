@@ -1,25 +1,25 @@
-﻿<?php
+<?php
    $uid=$_GET['uid'];
    //$uid='tmp';
    
-   if(file_exists('profile picture/'.$uid.'.jpg')){
-	   unlink('profile picture/'.$uid.'.jpg');
+   if(file_exists('profilepicture/'.$uid.'.jpg')){
+	   unlink('profilepicture/'.$uid.'.jpg');
    }
-   else if(file_exists('profile picture/'.$uid.'.jpeg')){
-	   unlink('profile picture/'.$uid.'.jpeg');
+   else if(file_exists('profilepicture/'.$uid.'.jpeg')){
+	   unlink('profilepicture/'.$uid.'.jpeg');
    }
-   else if(file_exists('profile picture/'.$uid.'.png')){
-	   unlink('profile picture/'.$uid.'.png');
+   else if(file_exists('profilepicture/'.$uid.'.png')){
+	   unlink('profilepicture/'.$uid.'.png');
    }
-   else if(file_exists('profile picture/'.$uid.'.bmp')){
-	   unlink('profile picture/'.$uid.'.bmp');
+   else if(file_exists('profilepicture/'.$uid.'.bmp')){
+	   unlink('profilepicture/'.$uid.'.bmp');
    }
    
    if(uploadFile($uid, $_FILES['uploaded_file'])){
        echo "success";
    }
 
-   function uploadFile($name, $fileInfo, $allowExt = array('jpeg', 'jpg', 'gif', 'png'), $maxSize = 2097152, $flag = true, $uploadPath = 'profile picture/') {
+   function uploadFile($name, $fileInfo, $allowExt = array('jpeg', 'jpg', 'gif', 'png'), $maxSize = 2097152, $flag = true, $uploadPath = 'profilepicture/') {
     // 存放錯誤訊息
     $mes = '';
 
