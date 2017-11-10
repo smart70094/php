@@ -8,7 +8,7 @@
 	$dbgo->query('set character set utf8');
 	
 	
-	$table=$_POST['table'];
+	$table="registerrequest";
 	$originator=$_POST['originator'];
 	$cmd=$_POST['cmd'];
 	$cmdContext=$_POST['cmdContext'];

@@ -10,9 +10,9 @@
 	
 	
 	$account=$_POST['account'];
-	$password=$_POST['password'];
+	/*$password=$_POST['password'];
 	$name=$_POST['name'];
-	$role=$_POST['role'];
+	$role=$_POST['role'];*/
 	$sql="SELECT uid FROM account WHERE account='$account'";
 	$result = $dbgo->prepare($sql); 
 	$result->execute(); 

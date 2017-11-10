@@ -21,7 +21,6 @@
 		$row_array['targetEndTime'] = $datainfo['targetEndTime'];
 		$row_array['state'] = $datainfo['state'];
 		$row_array['auth'] = $datainfo['auth'];
-		$row_array['dream'] = $datainfo['dream'];
         $row_array['allmission'] = $datainfo['allmission'];
         $row_array['completemission'] = $datainfo['completemission'];
 		//echo $datainfo['targetName'] . "," .$datainfo['targetContent'] . "," .$datainfo['targetStartTime'] . "," .$datainfo['targetEndTime'] . "," .$datainfo['state'] . "," .$datainfo['auth']. '<br>';

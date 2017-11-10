@@ -15,11 +15,10 @@
 	$missionContent=$_POST['missionContent'];
 	$remindTime=$_POST['remindTime'];
 	$tid=$_POST['tid'];
-	$planet=$_POST['planet'];
 
 	
 	
-	$sql="UPDATE ".$table." SET missionName='$missionName' , missionContent='$missionContent' , remindTime='$remindTime' , tid='$tid' , planet='$planet' WHERE mid='$mid'";
+	$sql="UPDATE ".$table." SET missionName='$missionName' , missionContent='$missionContent' , remindTime='$remindTime' , tid='$tid' WHERE mid='$mid'";
 	$result = $dbgo->prepare($sql); 
 	echo $result->execute(); 
 ?>

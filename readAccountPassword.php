@@ -9,16 +9,16 @@
 	
 	
 	
-	$table=$_POST['table'];
-	$tid=$_POST['tid'];
+	
 	$account=$_POST['account'];
 	
-	$sql="SELECT uid FROM account WHERE account='$account'";
+	$sql="SELECT account,password FROM account WHERE account='$account'";
 	$result = $dbgo->prepare($sql); 
 	$result->execute(); 
-	$uid= $result->fetchColumn(); 
 	
-	
-	$sql ="INSERT INTO ".$table." (tid,uid)  VALUES ( '$tid','$uid')";
-	echo $dbgo->exec($sql);
+	foreach ($result as $datainfo) {
+		$data=$datainfo['password'];
+		break;
+	}
+	echo $data;
 ?>
