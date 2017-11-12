@@ -24,5 +24,8 @@
 	
 	$sql ="INSERT INTO ".$table." (tid,targetName,targetContent,targetStartTime,targetEndTime,state,auth)  VALUES ( '$tid','$targetName','$targetContent','$targetStartTime','$targetEndTime','$state','$auth')";  //新增資料
 	echo $dbgo->exec($sql);
+	
+		
+	
 	//echo $table.",".$tid .",".$targetName.",".$targetContent.",".$targetStartTime.",".$targetEndTime.",".$state.",".$auth.",".$dream.'<br>';
 ?>
