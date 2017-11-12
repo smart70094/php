@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	$db_host = "localhost";
 	$db_user = "root";
 	$db_pass = "";
@@ -23,7 +23,8 @@
 	$auth=$_POST['auth'];
 	
 	$sql ="INSERT INTO ".$table." (tid,targetName,targetContent,targetStartTime,targetEndTime,state,auth)  VALUES ( '$tid','$targetName','$targetContent','$targetStartTime','$targetEndTime','$state','$auth')";  //新增資料
-	echo $dbgo->exec($sql);
+	$dbgo->exec($sql);
+    echo $tid;
 	
 		
 	

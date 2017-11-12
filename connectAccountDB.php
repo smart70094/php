@@ -18,6 +18,7 @@
 		$row_array['account'] = $datainfo['account'];
 		$row_array['password'] = $datainfo['password'];
 		$row_array['name'] = $datainfo['name'];
+        $row_array['email'] = $datainfo['email'];
 		$row_array['role'] = $datainfo['role'];
 		array_push($arr,$row_array);
     }
