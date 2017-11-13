@@ -9,7 +9,7 @@
 	
 	
 	
-	$table=$_POST['table'];
+	$table="participator";
 	$tid=$_POST['tid'];
 	$account=$_POST['account'];
 	

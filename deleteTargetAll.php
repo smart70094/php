@@ -10,6 +10,10 @@
 	$table=$_POST['table'];
 	$tid=$_POST['tid'];
 	
+	$sql ="DELETE FROM "."element"." WHERE '$tid'=tid";
+	$result = $dbgo->prepare($sql); 
+	echo $result->execute();
+	
 	$sql ="DELETE FROM "."participator"." WHERE '$tid'=tid";
 	$result = $dbgo->prepare($sql); 
 	echo $result->execute(); 
