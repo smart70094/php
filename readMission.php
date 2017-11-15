@@ -8,7 +8,8 @@
 	$dbgo->query('set character set utf8');
 	
 	$tid=$_POST['tid'];
-	$sql ="SELECT * FROM mission WHERE tid  LIKE '%$tid%'";
+
+	$sql ="SELECT mission.*,account.uid AS authID FROM mission,account WHERE (tid LIKE '%$tid%') AND account.account = auth";
 	$getUser=$dbgo->prepare($sql);
 	$getUser->execute();
 	$arr = array();
@@ -22,6 +23,7 @@
 		$row_array['state'] = $datainfo['state'];
 		$row_array['auth'] = $datainfo['auth'];
 		$row_array['collaborator'] = $datainfo['collaborator'];
+        $row_array['authID'] = $datainfo['authID'];
 		
 		
 		//echo $datainfo['targetName'] . "," .$datainfo['targetContent'] . "," .$datainfo['targetStartTime'] . "," .$datainfo['targetEndTime'] . "," .$datainfo['state'] . "," .$datainfo['auth']. '<br>';
