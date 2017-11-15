@@ -9,7 +9,7 @@
 	
 	$tid=$_POST['tid'];
 
-	$sql ="SELECT mission.*,account.uid AS authID FROM mission,account WHERE (tid LIKE '%$tid%') AND account.account = auth";
+	$sql ="SELECT mission.*,account.uid AS authID FROM mission,account WHERE (tid LIKE '$tid') AND account.account = auth";
 	$getUser=$dbgo->prepare($sql);
 	$getUser->execute();
 	$arr = array();
