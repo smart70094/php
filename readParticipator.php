@@ -7,7 +7,7 @@
 	$dbgo = new PDO($dbconnect, $db_user, $db_pass);
 	$dbgo->query('set character set utf8');
 	
-	$table=$_POST['table'];
+	
 	$tid=$_POST['tid'];
 	
 	$sql ="SELECT uid FROM participator WHERE tid='$tid'";

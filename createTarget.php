@@ -23,10 +23,19 @@
 	$auth=$_POST['auth'];
 	
 	$sql ="INSERT INTO ".$table." (tid,targetName,targetContent,targetStartTime,targetEndTime,state,auth)  VALUES ( '$tid','$targetName','$targetContent','$targetStartTime','$targetEndTime','$state','$auth')";  //新增資料
-	$dbgo->exec($sql);
-    echo $tid;
+	$result =$dbgo->prepare($sql);
+	$result->execute();
 	
-		
+	$sql="SELECT uid FROM account WHERE account='$auth'";
+	$result = $dbgo->prepare($sql); 
+	$result->execute(); 
+	$uid= $result->fetchColumn();
+	
+	
+	$sql ="INSERT INTO participator (tid,uid)  VALUES ( '$tid','$uid')";
+	$result = $dbgo->prepare($sql); 
+	echo $result->execute(); 
+    
 	
 	//echo $table.",".$tid .",".$targetName.",".$targetContent.",".$targetStartTime.",".$targetEndTime.",".$state.",".$auth.",".$dream.'<br>';
 ?>

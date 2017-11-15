@@ -7,7 +7,7 @@
 	$dbgo = new PDO($dbconnect, $db_user, $db_pass);
 	$dbgo->query('set character set utf8');
 	
-	$table=$_POST['table'];
+	$table="target";
 	$tid=$_POST['tid'];
 	
 	$sql ="DELETE FROM "."element"." WHERE '$tid'=tid";
