@@ -9,7 +9,13 @@
 	
 	
 	$tid=$_POST['tid'];
-	$uid=$_POST['uid'];
+	$account=$_POST['account'];
+	
+	$sql="SELECT uid FROM account WHERE account='$account'";
+	$result = $dbgo->prepare($sql); 
+	$result->execute(); 
+	$uid= $result->fetchColumn(); 
+	
 	$planet=$_POST['planet'];
 	
 	$sql ="UPDATE element SET planet='$planet' WHERE tid='$tid' AND uid='$uid'";

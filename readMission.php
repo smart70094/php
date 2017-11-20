@@ -23,12 +23,9 @@
 		$row_array['state'] = $datainfo['state'];
 		$row_array['auth'] = $datainfo['auth'];
 		$row_array['collaborator'] = $datainfo['collaborator'];
+		$row_array['dream'] = $datainfo['dream'];
         $row_array['authID'] = $datainfo['authID'];
-		
-		
-		//echo $datainfo['targetName'] . "," .$datainfo['targetContent'] . "," .$datainfo['targetStartTime'] . "," .$datainfo['targetEndTime'] . "," .$datainfo['state'] . "," .$datainfo['auth']. '<br>';
 		array_push($arr,$row_array);
 	}
 	echo json_encode($arr, JSON_UNESCAPED_UNICODE);	
-	
 ?>

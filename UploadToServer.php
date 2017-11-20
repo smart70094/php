@@ -11,15 +11,15 @@
    else if(file_exists('profilepicture/'.$uid.'.png')){
 	   unlink('profilepicture/'.$uid.'.png');
    }
-   else if(file_exists('profilepicture/'.$uid.'.bmp')){
-	   unlink('profilepicture/'.$uid.'.bmp');
+   else if(file_exists('profilepicture/'.$uid.'.gif')){
+	   unlink('profilepicture/'.$uid.'.gif');
    }
    
    if(uploadFile($uid, $_FILES['uploaded_file'])){
        echo "success";
    }
-
-   function uploadFile($name, $fileInfo, $allowExt = array('jpeg', 'jpg', 'gif', 'png'), $maxSize = 2097152, $flag = true, $uploadPath = 'profilepicture/') {
+	//maxSize可以存5MB
+   function uploadFile($name, $fileInfo, $allowExt = array('jpeg', 'jpg', 'gif', 'png'), $maxSize = 41943040, $flag = true, $uploadPath = 'profilepicture/') {
     // 存放錯誤訊息
     $mes = '';
 
