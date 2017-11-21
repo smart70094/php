@@ -12,7 +12,7 @@
 	$account=$_POST['account'];
 	$password=$_POST['password'];
 	$name=$_POST['name'];
-	$role=$_POST['role'];
+	$role="user";
 	$email=$_POST['email'];
 	
 	$sql="SELECT MAX(uid) FROM account";

@@ -9,18 +9,26 @@
 	
 	$table="message";
 	
-	$sql="SELECT mid+1 FROM ".$table." ORDER BY mid DESC LIMIT 1 ";
+	$sql="SELECT msgid+1 FROM ".$table." ORDER BY msgid DESC LIMIT 1 ";
 	$result = $dbgo->prepare($sql); 
 	$result->execute(); 
-	$mid= $result->fetchColumn(); 
+	$msgid= $result->fetchColumn(); 
 	
 	
 	$tid=$_POST['tid'];
-	$uid=$_POST['uid'];
+	$subject=$_POST['subject'];
+	
+	$sql="SELECT uid FROM account WHERE account='$subject'";
+	$result = $dbgo->prepare($sql); 
+	$result->execute(); 
+	$uid= $result->fetchColumn(); 
+	
+	
 	$context=$_POST['context'];
 	$originator=$_POST['originator'];
+	$date=$_POST['date'];
 	
-	$sql ="INSERT INTO ".$table." (mid,tid,uid,context,originator)  VALUES ( '$mid','$tid','$uid','$context','$originator')";  //新增資料
+	$sql ="INSERT INTO ".$table." (msgid,tid,uid,context,originator, date)  VALUES ( '$msgid','$tid','$uid','$context','$originator','$date')";  //新增資料
 	$result =$dbgo->prepare($sql);
 	echo $result->execute();
 
