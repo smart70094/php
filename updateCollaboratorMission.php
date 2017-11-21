@@ -18,14 +18,13 @@
 	$result = $dbgo->prepare($sql); 
 	$result->execute(); 
 	$auth= $result->fetchColumn(); 
-	echo $auth;
+
 	
 	
 	$sql="SELECT account FROM account WHERE uid='$collaborator'";
 	$result = $dbgo->prepare($sql); 
 	$result->execute(); 
 	$uid_collaborator= $result->fetchColumn(); 
-	echo $auth;
 
 	
 	$sql="UPDATE ".$table." SET collaborator='$uid_collaborator' WHERE tid='$tid' AND auth='$auth'";

@@ -13,6 +13,7 @@
 	$cmd=$_POST['cmd'];
 	$cmdContext=$_POST['cmdContext'];
 	$subject=$_POST['subject'];
+	$tid=$_POST['tid'];
 	
 	
 	
@@ -23,7 +24,7 @@
 	//echo $rid.",".$originator.",".$cmd.",".$cmdContext.",".$subject;
 	
 	
-	$sql="INSERT INTO ".$table." (rid, originator, cmd, cmdContext, subject) VALUES ('$rid', '$originator', '$cmd', '$cmdContext', '$subject')";
+	$sql="INSERT INTO ".$table." (rid, originator, cmd, cmdContext, subject, tid) VALUES ('$rid', '$originator', '$cmd', '$cmdContext', '$subject', '$tid')";
 	$result = $dbgo->prepare($sql); 
 	echo $result->execute();
 	
