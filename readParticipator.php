@@ -13,19 +13,20 @@
 	$sql ="SELECT uid FROM participator WHERE tid='$tid'";
 	$getUser=$dbgo->prepare($sql);
 	$getUser->execute();
-	$ans="";
+
+    $arr = array();
 	foreach ($getUser as $datainfo) {
-		$uid= $datainfo['uid'];
+        $uid=$datainfo['uid'];
+		$row_array['uid'] = $uid;
+        
 		$sql ="SELECT * FROM account WHERE uid='$uid'";
 		$getUser2=$dbgo->prepare($sql);
 		$getUser2->execute();
-		foreach($getUser2 as $datainfo2) {
-				$ans=$ans.",".$datainfo2['account'];
-		}
-		
-	
+        
+		foreach($getUser2 as $datainfo2) 
+				$row_array['account']=$datainfo2['account'];
+		array_push($arr,$row_array);
 	}
-	
-	$ans = substr($ans,1,strlen($ans));
-	echo $ans;
+	echo json_encode($arr, JSON_UNESCAPED_UNICODE);	
+
 ?>
