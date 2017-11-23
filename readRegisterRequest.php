@@ -22,6 +22,7 @@
 		$row_array['cmd']=$datainfo['cmd'];
 		$row_array['cmdContext']=$datainfo['cmdContext'];
 		$row_array['originator']=$datainfo['originator'];
+		$row_array['tid']=$datainfo['tid'];
 		array_push($arr,$row_array);
 	}
 	echo json_encode($arr, JSON_UNESCAPED_UNICODE);

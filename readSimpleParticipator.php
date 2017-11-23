@@ -15,9 +15,18 @@
 	$getUser->execute();
 	$ans="";
 	foreach ($getUser as $datainfo) {
-		$ans=$ans.",".$datainfo['uid'];
+		$uid= $datainfo['uid'];
+		$sql ="SELECT * FROM account WHERE uid='$uid'";
+		$getUser2=$dbgo->prepare($sql);
+		$getUser2->execute();
+		foreach($getUser2 as $datainfo2) {
+				$ans=$ans.",".$datainfo2['account'];
+		}
+		
+	
 	}
 	
 	$ans = substr($ans,1,strlen($ans));
 	echo $ans;
+
 ?>
