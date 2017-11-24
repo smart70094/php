@@ -17,21 +17,19 @@ catch(PDOException $e)
 ?>
 
     <?php
-    $uid = $_GET['userID'];
+    $uid = $_GET['uid'];
+	$tid = $_GET['tid'];
 	
 
-	$sth = $conn->prepare("SELECT element.tid,element.planet,target.targetName FROM `element`,`target` WHERE planet IS NOT NULL AND uid=? AND element.tid = target.tid");
-	$sth->execute(array($uid));
+	$sth = $conn->prepare("select context,originator from message WHERE uid=? AND tid=?");
+	$sth->execute(array($uid,$tid));
 	$result = $sth->fetchAll();
 	
 	$arr = array();
 	foreach ($result as $row) {
-        if($row['tid'] != 0){
-            $row_array['tid'] = $row['tid'];
-            $row_array['targetName'] = $row['targetName'];
-            $row_array['planet'] = $row['planet'];
-            array_push($arr,$row_array);
-        }
+		$row_array['context'] = $row['context'];
+		$row_array['originator'] = $row['originator'];
+		array_push($arr,$row_array);
 	}
 	
 	echo json_encode($arr, JSON_UNESCAPED_UNICODE);
