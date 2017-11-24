@@ -7,8 +7,6 @@
 	$dbgo = new PDO($dbconnect, $db_user, $db_pass);
 	$dbgo->query('set character set utf8');
 	
-	
-	
 	$account=$_POST['account'];
 	/*$password=$_POST['password'];
 	$name=$_POST['name'];

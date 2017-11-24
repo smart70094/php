@@ -7,23 +7,36 @@
 	$dbgo = new PDO($dbconnect, $db_user, $db_pass);
 	$dbgo->query('set character set utf8');
 	
-    $sql = "SELECT tid,targetEndTime FROM target" ;
-	
-	$getUser=$dbgo->prepare($sql);
-	$getUser->execute();
-	$today = getToday();
-	$todayFormat=strtotime($today);
+	$sql="SELECT DISTINCT tid FROM element WHERE planet is NULL ";
+	$getNoPlanet=$dbgo->prepare($sql);
+	$getNoPlanet->execute();
 	
 	$result="";
-	foreach ($getUser as $datainfo) {
+	foreach ($getNoPlanet as $datainfo) {
 		$tid=$datainfo['tid'];
-		$endTime=$datainfo['targetEndTime'];
-		$endTimeFormat=strtotime($endTime);
-		if($todayFormat>$endTimeFormat){
-			$result=$result.",".$tid;
+		
+		$sql = "SELECT tid,targetEndTime FROM target WHERE tid='$tid'" ;
+		$getUser=$dbgo->prepare($sql);
+		$getUser->execute();
+		$today = getToday();
+		$todayFormat=strtotime($today);
+		foreach ($getUser as $datainfo2) {
+			$tid2=$datainfo2['tid'];
+			$endTime=$datainfo2['targetEndTime'];
+			
+			$endTimeFormat=strtotime($endTime);
+			if($todayFormat>$endTimeFormat){
+				$result=$result.",".$tid2;
+			}
 		}
+		
 	}
 	echo $result;
+	
+	
+   
+	
+	
 	
 	
 	

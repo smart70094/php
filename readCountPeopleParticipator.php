@@ -7,15 +7,13 @@
 	$dbgo = new PDO($dbconnect, $db_user, $db_pass);
 	$dbgo->query('set character set utf8');
 	
-	$table="mission";
+	
 	$tid=$_POST['tid'];
-	$auth=$_POST['auth'];
-	$collaborator=$_POST['collaborator'];
+	
+	$sql ="SELECT count(tid) FROM participator WHERE tid='$tid'";
+	$result=$dbgo->prepare($sql);
+	$result->execute();
+	$count=$result->fetchColumn(); 
+	echo $count;
 
-	$sql="UPDATE ".$table." SET collaborator='$collaborator' WHERE tid='$tid' AND auth='$auth'";
-	$result = $dbgo->prepare($sql); 
-	echo $result->execute();
 ?>
-
-
-
