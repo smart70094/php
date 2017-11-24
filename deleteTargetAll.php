@@ -18,6 +18,10 @@
 	$result = $dbgo->prepare($sql); 
 	echo $result->execute(); 
 	
+	$sql ="DELETE FROM "."mission"." WHERE '$tid'=tid";
+	$result = $dbgo->prepare($sql); 
+	echo $result->execute(); 
+	
 	$sql ="DELETE FROM ".$table." WHERE '$tid'=tid";
 	$result = $dbgo->prepare($sql); 
 	echo $result->execute(); 
