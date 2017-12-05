@@ -17,8 +17,8 @@ catch(PDOException $e)
 ?>
 
     <?php
-    $uid = $_GET['userName'];
-	$tid = $_GET['targetID'];
+    $uid = $_GET['uid'];
+	$tid = $_GET['tid'];
 	
 
 	$sth = $conn->prepare("select * from record WHERE uid=? AND tid=?");

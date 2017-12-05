@@ -21,7 +21,7 @@ catch(PDOException $e)
 	$tid = $_GET['tid'];
 	
 
-	$sth = $conn->prepare("select context,originator from message WHERE uid=? AND tid=?");
+	$sth = $conn->prepare("select msgid,context,originator,date from message WHERE uid=? AND tid=? ORDER BY date DESC, msgid DESC");
 	$sth->execute(array($uid,$tid));
 	$result = $sth->fetchAll();
 	
@@ -29,6 +29,7 @@ catch(PDOException $e)
 	foreach ($result as $row) {
 		$row_array['context'] = $row['context'];
 		$row_array['originator'] = $row['originator'];
+        $row_array['date'] = $row['date'];
 		array_push($arr,$row_array);
 	}
 	
