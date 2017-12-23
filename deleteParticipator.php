@@ -18,6 +18,14 @@
 	
 	$sql ="DELETE FROM "."participator"." WHERE '$tid'=tid AND '$uid'=uid";
 	$result = $dbgo->prepare($sql); 
-	echo $result->execute(); 
+	
+	$sql ="DELETE FROM "."element"." WHERE '$tid'=tid AND '$uid'=uid";
+	$result = $dbgo->prepare($sql); 
+	
+	$sql ="DELETE FROM "."record"." WHERE '$tid'=tid AND '$uid'=uid";
+	$result = $dbgo->prepare($sql); 
+	
+	//缺少delete mission
+	
 
 ?>
