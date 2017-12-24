@@ -7,9 +7,9 @@
 	$dbgo = new PDO($dbconnect, $db_user, $db_pass);
 	$dbgo->query('set character set utf8');
 	
-	$table=$_POST['table'];
 	$tid=$_POST['tid'];
 	$account=$_POST['account'];
+
 	$sql="SELECT uid FROM account WHERE account='$account'";
 	$result = $dbgo->prepare($sql); 
 	$result->execute(); 
@@ -18,14 +18,19 @@
 	
 	$sql ="DELETE FROM "."participator"." WHERE '$tid'=tid AND '$uid'=uid";
 	$result = $dbgo->prepare($sql); 
+    echo $result->execute();
+    
 	
 	$sql ="DELETE FROM "."element"." WHERE '$tid'=tid AND '$uid'=uid";
 	$result = $dbgo->prepare($sql); 
+    echo $result->execute();
 	
 	$sql ="DELETE FROM "."record"." WHERE '$tid'=tid AND '$uid'=uid";
 	$result = $dbgo->prepare($sql); 
+    echo $result->execute();
 	
-	//缺少delete mission
-	
+	$sql ="DELETE FROM "."mission"." WHERE '$tid'=tid AND auth='$account'";
+	$result = $dbgo->prepare($sql); 
+    echo $result->execute();
 
 ?>
