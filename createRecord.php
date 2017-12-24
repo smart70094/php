@@ -7,32 +7,22 @@
 	$dbgo = new PDO($dbconnect, $db_user, $db_pass);
 	$dbgo->query('set character set utf8');
 	
-	$state="N";
-	$result="";
-
-	$sql = "SELECT tid,targetEndTime FROM target WHERE state='$state'" ;
-	$getUser=$dbgo->prepare($sql);
-	$getUser->execute();
-	$today = getToday();
-	$todayFormat=strtotime($today);
-	foreach ($getUser as $datainfo2) {
-		$tid2=$datainfo2['tid'];
-		$endTime=$datainfo2['targetEndTime'];
-
-		$endTimeFormat=strtotime($endTime);
-		if($todayFormat>$endTimeFormat){
-			$result=$result.",".$tid2;
-		}
-	}
-
-	echo $result;
+	$table="record";
 	
+	$uid=$_POST['uid'];
+	$tid=$_POST['tid'];
+	$record=$_POST['record'];
 	
-   
+	$date=getToday();
+	$sql="SELECT rid+1 FROM record ORDER BY rid DESC LIMIT 1 ";
+	$result = $dbgo->prepare($sql); 
+	$result->execute(); 
+	$rid= $result->fetchColumn(); 
 	
 	
 	
-	
+	$sql ="INSERT INTO ".$table." (uid,tid,rid,record,date) VALUES ( '$uid','$tid','$rid','$record','$date')";  //新增資料
+	echo $dbgo->exec($sql);
 	
 	function getToday(){
 		$today = getdate();
@@ -48,4 +38,5 @@
 
 		return $today;
 	}
+	 
 ?>
