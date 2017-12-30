@@ -11,7 +11,7 @@
 	$originator=$_POST['originator'];
 	
 	
-	$sql="SELECT * FROM ".$table." WHERE subject='$originator'";
+	$sql="SELECT ".$table.".*,account.uid FROM ".$table.",account WHERE subject='$originator' AND originator = account.account";
 	$getUser=$dbgo->prepare($sql);
 	$getUser->execute();
 	$ans="";
@@ -23,6 +23,7 @@
 		$row_array['cmdContext']=$datainfo['cmdContext'];
 		$row_array['originator']=$datainfo['originator'];
 		$row_array['tid']=$datainfo['tid'];
+		$row_array['authID']=$datainfo['uid'];
 		array_push($arr,$row_array);
 	}
 	echo json_encode($arr, JSON_UNESCAPED_UNICODE);
